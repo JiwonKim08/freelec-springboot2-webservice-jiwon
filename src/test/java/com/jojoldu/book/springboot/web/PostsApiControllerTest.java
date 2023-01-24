@@ -61,7 +61,7 @@ public class PostsApiControllerTest {
         postsRepository.deleteAll();
     }
 
-    @Test
+    @Test //실제 값을 넣어 잘 돌아가는지 검증한다.
     @WithMockUser(roles="USER")
     public void Posts_등록된다() throws Exception {
         //given

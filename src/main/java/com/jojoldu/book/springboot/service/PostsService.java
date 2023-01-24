@@ -20,7 +20,7 @@ public class PostsService {
 
     @Transactional
     public Long save(PostsSaveRequestDto requestDto) {
-        return postsRepository.save(requestDto.toEntity()).getId();
+        return postsRepository.save(requestDto.toEntity()).getId(); //데이터 베이스에 직접 쿼리를 날린다.
     }
 
     @Transactional
@@ -28,8 +28,8 @@ public class PostsService {
         Posts posts = postsRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다. id=" + id));
 
-        posts.update(requestDto.getTitle(), requestDto.getContent());
-
+        posts.update(requestDto.getTitle(), requestDto.getContent()); //데이터 테이블 업데이트
+        //DB에 쿼리를 날리는 코드가 없다 왜? 더티체킹
         return id;
     }
 
